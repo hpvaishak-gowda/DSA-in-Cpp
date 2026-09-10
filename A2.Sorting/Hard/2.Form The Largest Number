@@ -1,0 +1,86 @@
+class Solution {
+public:
+    string findLargest(vector<int>& arr) {
+
+        // Convert integers to strings
+        vector<string> nums;
+
+        for (int x : arr) {
+            nums.push_back(to_string(x));
+        }
+
+        // Custom sorting
+        sort(nums.begin(), nums.end(), [](string a, string b) {
+            return a + b > b + a;
+        });
+
+        // If all numbers are 0
+        if (nums[0] == "0")
+            return "0";
+
+        // Concatenate the sorted numbers
+        string ans = "";
+
+        for (string x : nums) {
+            ans += x;
+        }
+
+        return ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ vector<string> nums;
+
+        // Convert integers to strings
+        for (int x : arr) {
+            nums.push_back(to_string(x));
+        }
+
+        // Sort using custom comparator
+        sort(nums.begin(), nums.end(),
+            [](string &a, string &b) {
+                return a + b > b + a;
+            });
+
+        // Handle all zeros
+        if (nums[0] == "0")
+            return "0";
+
+        // Concatenate
+        string ans = "";
+
+        for (string s : nums) {
+            ans += s;
+        }
+
+        return ans;
+// std::sort()--->"Compare whichever pair helps me sort the array fastest."

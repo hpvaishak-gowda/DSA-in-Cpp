@@ -1,0 +1,27 @@
+My approach-
+
+class Solution {
+  public:
+    vector<int> removeDuplicates(vector<int> &arr) {
+        
+        int st = 0;
+        int end = 1;
+        int n=arr.size();
+        vector<int>ans;
+        
+        while(end<n){
+            if(arr[st] != arr[end]){
+                ans.push_back(arr[st]);
+                end++;
+                st=end-1;
+            }
+            else{
+                end++;
+                
+            }
+        }
+        ans.push_back(arr[n-1]);
+        return ans;
+        
+    }
+};

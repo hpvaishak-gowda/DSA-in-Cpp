@@ -1,27 +1,26 @@
 class Solution {
 	public:
 	string toggleCase(string &s) {
-		
-		int n = s.size();
-		string result = "";
-		
-		for (int i = 0; i<n; i++) {
-			if (s[i] >= 65 && s[i] <91) {
-				char single_letter = s[i]+32;
-				result += single_letter;
-			}
-			else {
-				char lower_single_letter = s[i]-32;
-				result += lower_single_letter;
-			}
-			
-		}
-		return result;
-		
+	    
+	    string ans="";
+	    int n=s.size();
+	    
+	    for(int i=0;i<n;i++){
+	        
+	        if(s[i]>96){
+	            char toggle=s[i]-32;
+	            ans+=toggle;
+	        }
+	        else{
+	            char toggle=s[i]+32;
+	            ans+=toggle;
+	        }
+	        
+	    }
+	    return ans;
+	    
 	}
 };
-
-
 --------------------------------------------------------------------------------------
 codes to know -
 Example 1: Character → ASCII number

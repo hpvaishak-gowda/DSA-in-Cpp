@@ -1,0 +1,63 @@
+MY Approach-
+class Solution {
+public:
+    int nthRoot(int n, int m) {
+        int st=1;
+        int end=m;
+        
+        if(n==1 || m==1){
+            return m;
+        }
+        else if(m==0){
+            return 0;
+        }
+        
+        while(st<end){
+            int mid = st+(end-st)/2;
+            
+            int comp=pow(mid,n);
+            
+            if(comp==m){
+                return mid;
+            }
+            else if(comp > m){
+                end=mid-1;
+            }
+            else{
+                st=mid+1;
+            }
+        }
+        return -1;
+    }
+};
+-------------------------------------------------------------------
+Chat gpt approach -
+   int low = 1;
+        int high = m;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            long long result = 1;
+
+            // Calculate mid^n
+            for (int i = 0; i < n; i++) {
+                result *= mid;
+
+                // Avoid unnecessary large multiplication
+                if (result > m)
+                    break;
+            }
+
+            if (result == m) {
+                return mid;
+            }
+            else if (result < m) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+
+        return -1;

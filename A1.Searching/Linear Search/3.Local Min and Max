@@ -1,0 +1,48 @@
+class Solution {
+public:
+    vector<int> extractPoints(vector<int>& arr) {
+
+        int n = arr.size();
+        vector<int> ans;
+
+        if (n == 0)
+            return ans;
+
+        // First element
+        ans.push_back(arr[0]);
+
+        int prev = arr[0];
+        int direction = 0;
+
+        for (int i = 1; i < n; i++) {
+
+            // Ignore equal elements
+            if (arr[i] == prev)
+                continue;
+
+            int newDirection;
+
+            if (arr[i] > prev)
+                newDirection = 1;       // increasing
+            else
+                newDirection = -1;      // decreasing
+
+            // Direction changed
+            if (direction != 0 && newDirection != direction) {
+                ans.push_back(prev);
+            }
+
+            direction = newDirection;
+            prev = arr[i];
+        }
+
+        // Add last different element
+        if (ans.back() != prev)
+            ans.push_back(prev);
+
+        return ans;
+    }
+};
+
+
+

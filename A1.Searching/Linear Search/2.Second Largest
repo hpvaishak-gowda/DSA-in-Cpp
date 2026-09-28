@@ -1,0 +1,19 @@
+class Solution {
+	public:
+	int getSecondLargest(vector<int> &arr) {
+		int n=arr.size();
+		sort(arr.begin(),arr.end());
+		int big = arr[n-1];
+		int sec_big = INT_MIN;
+		
+		for(int i=0;i<n;i++){
+		    if(arr[i]<big){
+		        sec_big = max(sec_big ,arr[i]);
+		    }
+		}
+		if(sec_big == INT_MIN){
+		    return -1;
+		}
+        return sec_big;		
+	}
+};

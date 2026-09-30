@@ -1,0 +1,47 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        int n = mat.size();
+        int m = mat[0].size();
+
+        // Step 1: Find the last row whose first element <= x
+        int low = 0;
+        int high = n - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (mat[mid][0] <= x) {
+                low = mid + 1;
+            } 
+            else {
+                high = mid - 1;
+            }
+        }
+
+        // No possible row
+        if (high < 0)
+            return false;
+
+        int row = high;
+
+        // Step 2: Binary search inside that row
+        low = 0;
+        high = m - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (mat[row][mid] == x)
+                return true;
+
+            else if (mat[row][mid] < x)
+                low = mid + 1;
+
+            else
+                high = mid - 1;
+        }
+
+        return false;
+    }
+};

@@ -23,3 +23,32 @@ for (auto it : freq) {
 return 0;
 
 }
+---------------------------------------------------------
+Without Hasmap-
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+int arr[] = {4, 2, 4, 3, 2, 4, 5, 3};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+
+vector<int> table[10];
+
+for (int i = 0; i < n; i++) {
+    int z = arr[i] % 10;
+    table[z].push_back(arr[i]);
+}
+
+for (int j = 0; j < 10; j++) {
+    if (table[j].size() > 0) {
+
+        cout<<table[j][0]<<"   Ocuured    "<<table[j].size();
+
+        cout << endl;
+    }
+}
+
+}

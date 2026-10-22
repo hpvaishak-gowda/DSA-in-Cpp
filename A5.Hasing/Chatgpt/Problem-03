@@ -1,0 +1,87 @@
+Problem 03/20: First Non-Repeating Element
+Problem Statement
+
+Given an array of N integers, find the first non-repeating element in the array. A non-repeating element is an element that appears exactly once.
+
+If no such element exists, print -1.
+
+Input Format
+The first line contains an integer N, representing the number of elements in the array.
+The second line contains N space-separated integers representing the array elements.
+Output Format
+
+Print the first non-repeating element. If no non-repeating element exists, print -1.
+
+Constraints
+1 ≤ N ≤ 10⁵
+-10⁹ ≤ arr[i] ≤ 10⁹
+Sample Test Case 1
+
+Input
+
+7
+4 5 1 2 1 4 5
+
+Output
+
+2
+
+Explanation: The elements 4, 5, and 1 appear more than once. The element 2 appears exactly once and is the first non-repeating element.
+
+Sample Test Case 2
+
+Input
+
+5
+1 2 3 4 5
+
+Output
+
+1
+
+Explanation: Every element appears exactly once. The first element is 1.
+
+Sample Test Case 3
+
+Input
+
+5
+1 1 2 2 3
+
+Output
+
+3
+
+Explanation: The elements 1 and 2 appear twice, while 3 appears exactly once.
+
+Sample Test Case 4
+
+Input
+
+4
+7 7 8 8
+
+Output
+
+-1
+
+Explanation: Every element appears more than once, so no non-repeating element exists.
+
+Sample Test Case 5
+
+Input
+
+8
+-1 2 -1 3 2 4 3 5
+
+Output
+
+4
+
+Explanation: The elements -1, 2, and 3 appear more than once. The first element that appears exactly once is 4.
+
+Your Task 💪
+
+Solve this problem using C++ and unordered_map<int, int>.
+
+Try writing the code yourself first, bro. Paste your solution here, and I'll review it!

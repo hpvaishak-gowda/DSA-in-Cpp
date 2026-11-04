@@ -77,5 +77,31 @@ i += 0;
 and your loop becomes infinite. so dont use that .....
 
 
+------------------------------------------------------------------------------------------------
+
+class Solution {
+	public:
+	
+	void reversa(vector<int>&arr,int st, int end) {
+		
+		while (st<end) {
+			swap(arr[st], arr[end]);
+			st++;
+			end--;
+		}
+		
+	}
+	
+	void reverseInGroups(vector<int> &arr, int k) {
+		int n = arr.size();
+		
+		for (int i = 0; i<n; i+=k) {
+			int z = min(i + k-1, n - 1);
+			reversa(arr,i, z);
+		}
+		
+	}
+};
+
 
 

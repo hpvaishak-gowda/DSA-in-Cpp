@@ -1,0 +1,51 @@
+class Solution {
+	public:
+	int evaluatePostfix(vector<string>& arr) {
+		stack<int>st;
+		
+		for (int i = 0; i<arr.size(); i++) {
+			int k;
+			string ch = arr[i];
+			
+			if (ch != "+" && ch != "-" && ch != "*" && ch != "/" && ch != "^") {
+				
+				k = stoi(ch);
+				st.push(k);
+				
+			}
+			else {
+				int first = st.top();
+				st.pop();
+				int second = st.top();
+				st.pop();
+				
+				switch (ch[0]) {
+					case '+':
+					st.push(second + first); break;
+					
+					case '-':
+					st.push(second - first); break;
+					
+					case '*':
+					st.push(second * first); break;
+					
+					case '/': {
+						int d = floor((double)second/first);
+						st.push(d); break;
+						
+					}
+					
+					case '^':
+					st.push(pow(second, first)); break;
+					
+					default:
+					return - 1;
+					
+				}
+			}
+			
+		}
+		return st.top();
+		
+	}
+};

@@ -1,0 +1,90 @@
+class Solution {
+	public:
+	int num(string p) {
+		if (p == "^") {
+			return 3;
+		}
+		else if (p == "*" || p == "/") {
+			return 2;
+		}
+		else {
+			return 1;
+		}
+	}
+	
+	int evaluateInfix(vector<string>& arr) {
+		vector<string>temp;
+		stack<string>st;
+		st.push("#");
+		
+		// Postfix
+		for (int i = 0; i<arr.size(); i++) {
+			string ch = arr[i];
+			
+			if (ch != "^" && ch != "*" && ch != "/" && ch != "+" && ch != "-") {
+				temp.push_back(ch);
+			}
+			else {
+				while (st.top() != "#" &&
+				(num(st.top()) > num(ch) ||
+				(num(st.top()) == num(ch) && ch != "^"))) {
+					
+					temp.push_back(st.top());
+					st.pop();
+				}
+				
+				st.push(ch);
+				
+			}
+		}
+		while (st.top() != "#") {
+			temp.push_back(st.top());
+			st.pop();
+		}
+		st.pop();
+		
+		stack<int>sta;
+		
+		for (int j = 0; j<temp.size(); j++) {
+			string ch = temp[j];
+			
+			if (ch != "^" && ch != "*" && ch != "/" && ch != "+" && ch != "-") {
+				sta.push(stoi(temp[j]));
+			}
+			else {
+				int first = sta.top();
+				sta.pop();
+				int second = sta.top();
+				sta.pop();
+				
+				switch (ch[0]) {
+					
+					case '^':
+					sta.push(pow(second, first));
+					break;
+					
+					case '*':
+					sta.push(first*second);
+					break;
+					
+					case '/':
+					sta.push((float)second/first);
+					break;
+					
+					case '+':
+					sta.push(second + first);
+					break;
+					
+					case '-':
+					sta.push(second - first);
+					break;
+					
+					default:
+					return 1;
+				}
+			}
+			
+		}
+		return sta.top();
+	}
+};

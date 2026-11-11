@@ -4,16 +4,15 @@ class Solution {
 		stack<int>st;
 		
 		for (int i = 0; i<arr.size(); i++) {
-			int k;
 			string ch = arr[i];
 			
-			if (ch != "+" && ch != "-" && ch != "*" && ch != "/" && ch != "^") {
-				
-				k = stoi(ch);
-				st.push(k);
-				
+			if (ch != "+" && ch != "-" && ch != "/" && ch != "*" && ch != "^") {
+				st.push(stoi(ch));
 			}
 			else {
+			    if(st.size()<2){
+			        return -1;
+			    }
 				int first = st.top();
 				st.pop();
 				int second = st.top();
@@ -21,31 +20,29 @@ class Solution {
 				
 				switch (ch[0]) {
 					case '+':
-					st.push(second + first); break;
+					st.push(second + first);break;
 					
 					case '-':
-					st.push(second - first); break;
+					st.push(second - first);break;
 					
 					case '*':
-					st.push(second * first); break;
+					st.push(second * first);break;
 					
-					case '/': {
-						int d = floor((double)second/first);
-						st.push(d); break;
-						
-					}
+					case '/':
+					st.push(floor((double)second/first));break;
 					
 					case '^':
-					st.push(pow(second, first)); break;
+					st.push(pow(second, first));break;
 					
 					default:
-					return - 1;
+					return 1;
 					
 				}
 			}
-			
+		}
+		if(st.size()!= 1){
+		    return -1;
 		}
 		return st.top();
-		
 	}
 };

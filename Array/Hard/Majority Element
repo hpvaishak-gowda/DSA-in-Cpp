@@ -85,3 +85,31 @@ public:
         return -1;
     }
 };
+--------------------------------------------------------------------24/11/2026
+class Solution {
+  public:
+    int majorityElement(vector<int>& arr) {
+        
+        int n=arr.size();
+        sort(arr.begin(),arr.end());
+        int count=0;
+        
+        int pivot=arr[0];
+        
+        for(int i=0;i<n;i++){
+            if(arr[i]==pivot){
+                count++;
+            }
+            else{
+                count=1;
+                pivot=arr[i];
+            }
+            if(count>n/2){
+                return pivot;
+            }
+        }
+        return -1;
+        
+        
+    }
+};

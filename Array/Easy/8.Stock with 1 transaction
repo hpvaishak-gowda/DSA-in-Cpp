@@ -43,3 +43,25 @@ public:
         return profit;
     }
 };
+------------------------------------------------------------------------------------------------------------------------
+3.(24-11-2026)
+class Solution {
+  public:
+    int maxProfit(vector<int> &prices) {
+      int n = prices.size();
+      int profit = 0;
+
+      int buy = prices[0];
+      for (int i = 1; i < n; i++) {
+        int pivot = prices[i];
+
+        if (pivot > buy) {
+          int sell = pivot;
+          profit = max(profit, sell-buy);
+        } else {
+          buy = pivot;
+        }
+      }
+      return profit;
+    }
+};
